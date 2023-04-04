@@ -1,0 +1,274 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        @import url("/Bamen_Sub/project5/css/onepost.css");
+    </style>
+
+</head>
+
+<body>
+
+    <!--스크립트와 부트스트랩 src 불러오는 영역-->
+    <script src="script.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"></script>
+
+    <!--헤더부분: 바멘텀 로고 등등-->
+    <div class="page">
+        <header>
+            <img src="./img/로고_투명_흰색.png" class="Logo">
+            <nav>
+                <ul>
+                    <li><a href="#" class="menuLink" style="width: 50px; align: center;">바멘텀</a></li>
+                    <li><a href="#" class="menuLink" style="width: 60px; align: center;">내 프로필</a></li>
+                    <li><a href="#" class="menuLink" style="width: 60px;">여긴뭐야</a></li>
+                    <li><a href="#" class="menuLink" style="width: 90px;">내
+                            자전거 등록</a></li>
+
+                </ul>
+
+                <div class="search-box">
+                    <button class="btn-search">
+                        <i class="fas fa-search"><img src="./img/search_white(2).png" class="search_icon"
+                                style="width: 40px; margin-top: 8px;"></i>
+                    </button>
+
+                    <input type="text" class="input-search" placeholder="검색어를 입력하세요!">
+                </div>
+
+                <img src="./img/person-circle.svg" class="profile_circle">
+
+            </nav>
+        </header>
+    </div>
+
+
+
+    <!--포스트들이 들어가있는 영역-->
+    <section class="post">
+        <!--포스트1-->
+        <div class="postbox">
+            <a class="postbox_head" href="#" style="text-decoration: none;">🍟</a><span class="writer">
+                <%=retDto.getU_nick()%>
+            </span>
+            <p class="postbox_neck">
+                <%=retDto.getP_title()%>
+            </p>
+            <hr>
+            <%=retDto.getP_date()%>
+                <p class="postbox_body">
+                    <%=retDto.getP_content()%>
+                </p>
+                <!--버튼영역-->
+                <button class="post_like">
+                    <a href="#" class="Like">좋아요</a>
+                </button>
+
+        </div>
+
+        <!--공간나누는영역-->
+        <div id="space"></div>
+
+    </section>
+
+    <!--로그인 했을 때만댓글남기기-->
+
+
+
+
+    <!-- <c:if test="${sessionScope.sessionID!=null}"></c:if> -->
+    <div id="comment-count">
+        댓글 <span id="count">
+            <%=clist.size()%>
+        </span>
+    </div>
+    <form id="form-commentInfo">
+        <input type="text" id="comment_input" placeholder="댓글을 입력해 주세요.">
+        <button type="button" id="comment_submit">등록</button>
+
+
+        <!-- <input type="button" value="등록"/>  -->
+    </form>
+
+
+    <!-- 댓글 나오는 목록 -->
+    <div id=comments>
+        <table border="1">
+            <caption>
+                <h2></h2>
+            </caption>
+            <tr>
+                <td>작성자</td>
+                <td>내용</td>
+            </tr>
+
+        </table>
+        <div>
+            <span>글쓴이</span> <span>시간</span> <span id="cmtList">내용</span>
+
+            <span id="cList"></span>
+            <button type="button" id="comment_delete">삭제하기</button>
+            <span id="delete"></span>
+
+        </div>
+
+
+
+    </div>
+
+
+
+    <script src="https://code.jquery.com/jquery-3.6.4.min.js"
+        integrity="sha256-oP6HI9z1XaZNBrJURtCoUT5SUnxFr8s3BzRl+cbzUq8=" crossorigin="anonymous">
+
+        </script>
+
+
+
+    <script type="text/javascript">
+        //댓글 넣기!!!
+
+        let post_comment;
+
+        //댓글을 넣은 후 등록 버튼을 눌렀을 때 댓글정보를 가져와서 변수에 저장
+        $('#comment_submit').click(function () {
+            console.log("comment function")
+            //input 가져오는 것을 위에 하면 아무것도 안가져오게 됨
+            post_comment = $("#comment_input").val();
+            cmt_create();
+        });
+
+        const cmt_create = function () {
+            console.log("cmt_create function");
+            console.log("입력한 댓글", post_comment);
+
+            $.ajax({
+                type: "post",
+                url: "CmtInput.do",
+                data: {
+                    "post_comment": post_comment
+                },
+                dataType: "json",
+                success: function (receive_data) {
+                    console.log(receive_data);
+                    //ajax_comment_suc(receive_data) 
+
+                    //댓글이 잘 저장되었을 때 페이지 reload
+                    if (receive_data.resCode === 1) {
+                        location.reload();
+                    }
+
+                },
+                error: function (erreMsg) {
+                    console.log('error');
+                    console.log(erreMsg);
+                    alert("서버가 원활하지 않습니다..");
+                }
+            });
+
+        };
+
+        const ajax_comment_suc = function (receive_data) {
+            console.log('내가 쓴 글: ' + post_comment);
+            console.log(receive_data);
+
+            let json = receive_data;
+            console.log(json);
+        };
+
+        // 댓글 삭제하기 !!!!!!!!!!!!!!!!!!!!!!!!!!!
+        let c_idx;
+        let idxList = [];
+        idxList.push();
+
+        $('#comment_delete').click(function () {
+            c_idx = $("#delete").text();
+            idxList = $("#cmtList").text();
+            console.log("댓글번호!!!!", c_idx);
+            console.log(idxList);
+            cmt_delete();
+
+        })
+
+        const cmt_delete = function () {
+            console.log("cmt_delete function");
+            console.log("삭제할 댓글 번호", c_idx);
+
+            $.ajax({
+                type: "post",
+                url: "CmtDelete.do",
+                data: {
+                    "c_idx": c_idx
+                },
+                dataType: "json",
+                //댓글이 잘 삭제되었을 때 페이지 reload
+                success: function (data) {
+                    location.reload();
+
+                },
+                error: function (erreMsg) {
+                    console.log('error');
+                    console.log(erreMsg);
+                    alert("서버가 원활하지 않습니다..");
+                }
+            })
+        };
+    </script>
+
+
+
+
+
+    </section>
+    <!--푸터영역-->
+    <div id="foot" class="container">
+        <footer class="d-flex flex-wrap justify-content-between align-items-center py-3 my-4 border-top">
+            <div class="col-md-4 d-flex align-items-center">
+                <a href="/" class="mb-3 me-2 mb-md-0 text-muted text-decoration-none lh-1">
+                    <svg class="bi" width="30" height="24">
+                        <use xlink:href="#bootstrap"></use>
+                    </svg>
+                </a> <span class="mb-3 mb-md-0 text-muted">©2023 Bamentum, The
+                    sun covers the moon</span>
+            </div>
+
+            <ul class="nav col-md-4 justify-content-end list-unstyled d-flex">
+                <li class="ms-3"><a class="text-muted" href="#"><svg class="bi" width="24" height="24">
+                            <use xlink:href="#twitter"></use>
+                        </svg></a></li>
+                <li class="ms-3"><a class="text-muted" href="#"><svg class="bi" width="24" height="24">
+                            <use xlink:href="#instagram"></use>
+                        </svg></a></li>
+                <li class="ms-3"><a class="text-muted" href="#"><svg class="bi" width="24" height="24">
+                            <use xlink:href="#facebook"></use>
+                        </svg></a></li>
+            </ul>
+        </footer>
+    </div>
+    <!--푸터영역끝-->
+
+
+
+    <!--섹션 끝-->
+
+    <script>
+
+    </script>
+
+
+</body>
+<!--바디끝-->
+
+
+
+
+
+
+
+
+</html>

@@ -1,0 +1,260 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link
+        href="https://fonts.googleapis.com/css2?family=Nanum+Brush+Script&family=Noto+Sans+KR:wght@100;300;400;500;700;900&display=swap"
+        rel="stylesheet">
+
+    <!-- css 경로 -->
+    <link rel="stylesheet" href="/Bamen_Sub/project5/css/post.css">
+
+    <title>바멘텀 | 피드</title>
+    <!-- <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css"> -->
+
+    <style>
+        @import url("/Bamen_Sub/project5/css/post.css");
+
+
+    </style>
+
+</head>
+
+<body>
+    <!--스크립트와 부트스트랩 src 불러오는 영역-->
+    <script src="script.js"></script>
+
+
+    <!--헤더부분: 바멘텀 로고 등등-->
+    <div class="page">
+        <header>
+            <img src="/Bamen_Sub/project5/img/로고_투명_흰색.png" class="Logo">
+            <nav>
+                <ul>
+                    <li><a href="#" class="menuLink" style="width : 50px; align : center;">바멘텀</a></li>
+                    <li><a href="#" class="menuLink" style="width : 60px; align : center;">내 프로필</a></li>
+                    <li><a href="#" class="menuLink" style="width : 60px;">여긴 뭐야</a></li>
+                    <li><a href="#" class="menuLink" style = "width : 90px;">내 자전거 등록</a></li>
+
+                </ul>
+
+                <div class="search-box">
+                    <button class="btn-search"><i class="fas fa-search"><img
+                                src="/Bamen_Sub/project5/img/search_white(2).png" class="search_icon"
+                                style="width : 40px; margin-top : 8px;"></i></button>
+
+                    <input type="text" class="input-search" placeholder="검색어를 입력하세요!">
+                </div>
+
+                <img src="/Bamen_Sub/project5/img/person-circle.svg" class="profile_circle">
+
+            </nav>
+        </header>
+    </div>
+
+    <div class="banner"
+        style="display: flex; margin-top : 15px; margin-left : 400px; margin-bottom : -20px; height : 100px;">
+        <img src="/Bamen_Sub/project5/img/배너4.jpg"
+            style="border : 1px solid rgb(228, 107, 173); width : 700px;">
+    </div>
+
+    <div style="margin-left : 300px;">
+
+        <!--글쓰는 회색박스 영역-->
+        <div class="writing_Sector" style=" cursor: pointer;" onclick = "location.href='/html/postCreate.html'">
+            <div  onclick="location.href='목적지 링크주소(URL)';"></div>
+
+            <img src="/Bamen_Sub/project5/img/pencil-square.svg"
+                style="width : 30px; margin-top : 23px; margin-left : 20px;">
+            <!-- 글쓰기 영역 접속 경로 -->
+            <div class="writing_container">
+
+                <p style="margin-left : 15px; margin-top : 13px;">당신의 생각은 어떠신가요?</p>
+            </div>
+        </div>
+
+        <!--포스트들이 들어가있는 영역-->
+        <section class="post">
+            <!--포스트1-->
+            <div class="postbox" id="post1">
+                <a class="postbox_head" href="#">🍟</a> <span class="writer">김연우</span>
+                <p class="postbox_neck">제가 그동안 밀크쉐이크에 감자튀김을 찍어먹지 않았던 이유에 관하여</p>
+
+                <div class="div_postbox_body">
+                    <p class="postbox_body" style="line-height: 30px;">저는 얼마 전 경악을 금치 못했습니다. 밀크쉐이크와 감자튀김의 조화라니!
+                        제게는 있을 수 없는 일이었습니다. 그나저나 원래 감자튀김은 케첩 아닌가요!? 아, 물론 저는 본연의 맛을 즐기기 위해 케첩과
+                        함께 먹지는 않지만, 그래도 밀크쉐이크라니요! 정말 말도 안되는 일이라고 생각했습니다. 김치를 물로 씻어먹는다는 것과 같은
+                        소리 아닌가요? 그렇지만 그것은 큰 『오산』이었습니다. </p>
+                </div>
+
+                <div class="ad" style="border : 1px solid #1bbc98;">
+                    <img src="/Bamen_sub/project5/img/우측_배너1.jpg" style = "margin-top : 50px; width : 298px;">
+                </div>
+
+                <!--좋아요 / 댓글 버튼 영역-->
+                <hr style="border : 1 solid gray;">
+                <button class="post_like"><a href="#" class="Like">좋아요</a></button>
+                <button class="post_origin"><a href="postOrigin.html" class="Origin">원문보기</a></button>
+                <!-- <input type="checkbox" class="more_button"> -->
+            </div>
+            <!--공간나누는영역-->
+            <div class="space"></div>
+
+            <!--포스트2-->
+
+            <div class="postbox" id="post2">
+                <a class="postbox_head" href="#">🍟</a> <span class="writer">안미연</span>
+                <p class="postbox_neck">연우랑 상재가 너무 밥을 안먹어서 걱정이에요ㅠㅠ</p>
+                <div class="div_postbox_body">
+                    <p class="postbox_body" style="line-height: 30px;">상재와 연우는 밥을 적게 먹게 생기지 않았습니다. 그럼에도 불구하고 이 둘은
+                        거의 맨날 점심을 거르다시피 하죠ㅠㅠ 이러다가 쓰러지기라도 하면 어쩔지 너무나 걱정입니다ㅠㅠ</p>
+                </div>
+
+
+
+                <!--좋아요 / 댓글 버튼 영역-->
+                <hr style="border : 1 solid gray;">
+                <button class="post_like"><a href="#" class="Like">좋아요</a></button>
+                <button class="post_origin"><a href="postOrigin.html" class="Origin">원문보기</a></button>
+                <!-- <input type="checkbox" class="more_button"> -->
+            </div>
+
+            <!--공간나누는영역-->
+            <div class="space"></div>
+
+
+
+            <!--포스트3-->
+            <div class="postbox" id="post3">
+                <a class="postbox_head" href="#">🍟</a> <span class="writer">문경수</span>
+                <p class="postbox_neck">연우야 잘하고 있어!</p>
+                <div class="div_postbox_body">
+                    <p class="postbox_body" style="line-height: 30px;">우리 연우가 요즘 참 대견스럽습니다 ㅎㅎ 맨날 요즘처럼만 해줬으면 좋겠습니다 ㅎㅎ</p>
+                </div>
+
+                <!--좋아요 / 댓글 버튼 영역-->
+                <hr style="border : 1 solid gray;">
+                <button class="post_like"><a href="#" class="Like">좋아요</a></button>
+                <button class="post_origin"><a href="postOrigin.html" class="Origin">원문보기</a></button>
+                <!-- <input type="checkbox" class="more_button"> -->
+            </div>
+            <!--공간나누는영역-->
+            <div class="space"></div>
+
+        </section>
+        <!--섹션 끝-->
+
+    </div>
+
+    <script>
+
+
+    </script>
+
+
+</body>
+<!--바디끝-->
+
+
+<script>
+
+    // 한무스크롤 script시작
+    var count = 4;
+    window.onscroll = function (e) {
+        if ((window.innerHeight + window.scrollY) >= (document.body.offsetHeight * 0.8)) {
+            setTimeout(function () {
+                var addContent1 = document.createElement("div");
+                addContent1.classList.add(`postbox`);
+                addContent1.classList.add(`postbox${count}`)
+                addContent1.innerHTML += `<a class="postbox_head" href="#">🍟</a>김연우
+            <p class="postbox_neck">"저는 감자튀김에 밀크쉐이크를 찍어먹지 않는 맛알못입니다"</p>
+            <hr>`
+
+                addContent1.innerHTML += `<p class="postbox_body">Whenever you ne <br> <br><br> <br><br> <br><br> <br><br> <br><br> <br> <br> <br>
+                <br> <br> <br>ed to, be sure to use margin utilities to keep things nice and tidy.</p>
+            <!--좋아요 / 댓글 버튼 영역-->
+            <button class="post_like"><a href="#">좋아요</a></button>
+            <button class="post_origin"><a href="#">원문보기</a></button>
+            <input type="checkbox" class="more_button">`
+
+
+                document.querySelector('section').appendChild(addContent1);
+                count = count + 1;
+                var addContent2 = document.createElement("div");
+                addContent2.classList.add('space');
+                document.querySelector('section').appendChild(addContent2);
+
+
+                var addContent3 = document.createElement("div");
+                addContent3.classList.add(`postbox`);
+                addContent3.classList.add(`postbox${count}`)
+                addContent3.innerHTML += `  <a class="postbox_head" href="#">🍔</a>안미연
+            <p class="postbox_neck">"연우랑 상재가 너무 밥을 안먹어서 걱정이에요"</p>
+            <hr>
+            <p class="postbox_body">Whenever you need to, be sure to use margin utilities to keep things nice and tidy.
+            </p>
+            <!--좋아요 / 댓글 버튼 영역-->
+            <button class="post_like"><a href="#">좋아요</a></button>
+            <button class="post_origin"><a href="#">원문보기</a></button>
+            <input type="checkbox" class="more_button">`
+                document.querySelector('section').appendChild(addContent3);
+                count = count + 1;
+                var addContent4 = document.createElement("div");
+                addContent4.classList.add('space');
+                document.querySelector('section').appendChild(addContent4);
+            }, 100)
+        }
+    }
+
+    // 한무스크롤 script끝 
+
+</script>
+
+
+
+
+
+
+
+
+
+
+
+
+<!--푸터영역-->
+<div id="foot" class="container">
+    <footer class="d-flex flex-wrap justify-content-between align-items-center py-3 my-4 border-top">
+        <div class="col-md-4 d-flex align-items-center">
+            <a href="/" class="mb-3 me-2 mb-md-0 text-muted text-decoration-none lh-1">
+                <svg class="bi" width="30" height="24">
+                    <use xlink:href="#bootstrap"></use>
+                </svg>
+            </a>
+            <span class="mb-3 mb-md-0 text-muted">©2023 Bamentum, The sun covers the moon</span>
+        </div>
+
+        <ul class="nav col-md-4 justify-content-end list-unstyled d-flex">
+            <li class="ms-3"><a class="text-muted" href="#"><svg class="bi" width="24" height="24">
+                        <use xlink:href="#twitter"></use>
+                    </svg></a></li>
+            <li class="ms-3"><a class="text-muted" href="#"><svg class="bi" width="24" height="24">
+                        <use xlink:href="#instagram"></use>
+                    </svg></a></li>
+            <li class="ms-3"><a class="text-muted" href="#"><svg class="bi" width="24" height="24">
+                        <use xlink:href="#facebook"></use>
+                    </svg></a></li>
+        </ul>
+    </footer>
+</div>
+<!--푸터영역끝-->
+
+
+
+
+
+</body>
+
+</html>

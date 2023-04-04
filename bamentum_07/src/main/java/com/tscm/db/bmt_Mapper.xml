@@ -1,0 +1,281 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+
+<mapper namespace="com.tscm.model.BmtUserDAO">
+
+	<select id="bmt_login" parameterType="com.tscm.model.BmtUserDTO"
+		resultType="com.tscm.model.BmtUserDTO">
+
+		select *
+		from bmt_user
+		where u_email = #{u_email}
+		and u_pw =
+		#{u_pw}
+
+	</select>
+
+	<select id="search" parameterType="com.tscm.model.BmtOnePostDTO" resultType="com.tscm.model.BmtOnePostDTO">
+	 select * from bmt_post p, bmt_user u where u.u_email=p.u_email and p.p_content like '%'||#{p_content}||'%' order by p_date desc
+	</select>
+
+
+	<select id="bmt_selectPagePost" parameterType="int"
+		resultType="com.tscm.model.BmtOnePostDTO">
+
+
+		SELECT * 
+		    FROM (
+		        SELECT A.* , ROWNUM AS RN 
+		        FROM (
+		            
+		                select u.u_nick, p.p_title, p.p_content, p.p_file, p.p_date, p.p_view, p.p_idx
+		                    from bmt_user u, bmt_post p
+		                where u.u_email = p.u_email
+		                    order by p.p_date desc
+		
+		        ) A 
+		    ) 
+		                
+		    WHERE RN BETWEEN (#{page}*3 + 1) AND ((#{page}+1) * 3) 	
+
+
+	</select>
+
+
+	<insert id="bmt_join" parameterType="com.tscm.model.BmtUserDTO">
+
+		insert into bmt_user
+		values
+		(#{u_email}, #{u_pw}, #{u_nick}, #{u_profile},
+		#{u_info}, #{u_course},
+		sysdate, #{u_type})
+
+	</insert>
+
+
+	<insert id="bic_insert" parameterType="com.tscm.model.BmtBicDTO">
+
+		insert into bmt_bic
+		values (#{b_num}, #{u_email}, #{b_img}, #{b_brand}, #{b_model})
+
+	</insert>
+
+
+	<select id="bmt_select_user" 
+		parameterType="com.tscm.model.BmtUserDTO"
+		resultType="com.tscm.model.BmtUserDTO">
+
+		select *
+			from bmt_user
+		where u_email = #{u_email}
+
+
+	</select>
+
+	<select id="bmt_select_bic_list" 
+		parameterType="com.tscm.model.BmtUserDTO"
+		resultType="com.tscm.model.BmtBicDTO">
+
+		select *
+			from bmt_bic
+		where u_email = #{u_email}
+
+	</select>
+
+	<select id="bmt_select_my_post" 
+		parameterType="com.tscm.model.BmtUserDTO"
+		resultType="com.tscm.model.BmtPostDTO">
+
+		select *
+			from bmt_post
+		where u_email = #{u_email}
+
+	</select>
+	
+ 	
+	<select id="bmt_select_follow" 
+		parameterType="com.tscm.model.BmtUserDTO"
+		resultType="com.tscm.model.BmtFollowDTO">
+
+		select * 
+			from bmt_follow
+		where follower = #{u_email}
+
+	</select>
+	
+	<select id="bmt_count_following" 
+		parameterType="com.tscm.model.BmtUserDTO"
+		resultType="int">
+
+		select count(*) 
+			from bmt_follow
+		where follower = #{u_email}
+
+	</select>
+	
+	<select id="bmt_count_follower" 
+		parameterType="com.tscm.model.BmtUserDTO"
+		resultType="int">
+
+		select count(*) 
+			from bmt_follow
+		where following = #{u_email}
+
+	</select>
+	
+	
+	<select id="bmt_select_fw_detail" 
+		parameterType="com.tscm.model.BmtUserDTO"
+		resultType="com.tscm.model.BmtFwDetailDTO">
+
+		select f.f_idx, f.follower, f.following, u.u_nick, u.u_info, u.u_profile, f.f_date
+		    from bmt_follow f, bmt_user u
+		where f.following = u.u_email
+		        and f.follower = #{u_email}
+
+	</select>
+
+
+	<delete id="bmt_delete_follow" 
+		parameterType="com.tscm.model.BmtFollowDTO">
+
+		DELETE FROM BMT_FOLLOW
+		WHERE FOLLOWER = #{follower} 
+			and FOLLOWING = #{following}
+
+	</delete>
+	
+	<insert id="bmt_insert_follow" 
+		parameterType="com.tscm.model.BmtFollowDTO">
+
+		insert into bmt_follow 
+		values (BMT_FOLLOW_SEQ.nextval, #{follower}, #{following}, SYSDATE)
+
+	</insert>
+	
+	
+	<select id = "bmt_select_post_writer" 
+		parameterType="long"
+		resultType="String">
+
+		select u_email
+			from bmt_post
+		where p_idx = #{p_idx}
+
+	</select>
+	
+	<!-- 좋아요 -->
+	<select id="show_like" parameterType="com.tscm.model.BmtLikeDTO"
+		resultType="int">
+		select count(*) from bmt_post_likes where p_idx=#{p_idx}
+
+	</select>
+
+	<insert id="like_insert"
+		parameterType="com.tscm.model.BmtLikeDTO">
+		insert into bmt_post_likes values
+		(BMT_POST_LIKES_SEQ.nextval,#{p_idx},#{u_email},sysdate)
+
+	</insert>
+
+
+	<select id="bmt_selectPublic"
+		resultType="com.tscm.model.BmtPostDTO">
+
+		select *
+		from bmt_post
+
+	</select>
+
+	<select id="bmt_selectAllPost"
+		resultType="com.tscm.model.BmtOnePostDTO">
+
+		select p.postid, u.email, u.u_name, p.title, p.p_content,
+		p.imgPath
+		from bmt_post p, bmt_user u
+		where u.email = p.email order by
+		p_date
+
+	</select>
+
+	<select id="bmt_selectOrigin"
+		parameterType="com.tscm.model.BmtOnePostDTO"
+		resultType="com.tscm.model.BmtOnePostDTO">
+
+		select p.postid, u.email, u.u_name, p.title, p.p_content,
+		p.imgpath
+		from bmt_post p, bmt_user u
+		where u.email = p.email and
+		p.postid=#{postId}
+
+	</select>
+
+	<select id="bmt_selectPost"
+		parameterType="com.tscm.model.BmtPostDTO"
+		resultType="com.tscm.model.BmtPostDTO">
+
+		select postid, boardid, email, title, imgpath, p_content
+		from bmt_post
+		where postid=#{postId}
+
+	</select>
+
+	<select id="bmt_selectOnePost"
+		parameterType="com.tscm.model.BmtOnePostDTO"
+		resultType="com.tscm.model.BmtOnePostDTO">
+
+		select p.p_idx, u.u_email, u.u_nick, p.p_title,
+		p.p_content, p.p_file,
+		p.p_date
+		from bmt_post p, bmt_user u
+		where
+		u.u_email = p.u_email and p.p_idx=#{p_idx}
+
+	</select>
+
+	<select id="bmt_selectComment"
+		parameterType="com.tscm.model.BmtOnePostDTO"
+		resultType="com.tscm.model.BmtCmtDtDTO">
+
+		select c.c_idx, c.p_idx, c.c_content, c.c_date, c.u_email,
+		u.u_nick
+		from bmt_comment c, bmt_user u
+		where u.u_email = c.u_email and
+		c.p_idx=#{p_idx} order by c.c_idx desc
+
+	</select>
+
+
+	<insert id="cmt_insert" parameterType="com.tscm.model.BmtCmtDTO">
+		insert into bmt_comment
+		values (BMT_COMMENT_SEQ.nextval, #{p_idx},
+		#{c_content}, sysdate,
+		#{u_email})
+	</insert>
+
+	<delete id="cmt_delete" parameterType="com.tscm.model.BmtCmtDTO">
+		delete from bmt_comment
+		where c_idx=#{c_idx}
+	</delete>
+
+	<insert id="post_insert"
+		parameterType="com.tscm.model.BmtPostDTO">
+		
+		insert into bmt_post
+		values( BMT_POST_SEQ.nextval, #{p_type}, #{p_title},
+		#{p_content}, #{p_file}, sysdate, #{u_email}, #{p_view})
+		
+	</insert>
+
+	<delete id="post_delete"
+		parameterType="com.tscm.model.BmtPostDTO">
+		delete from bmt_post where p_idx=#{p_idx}
+	</delete>
+
+
+
+</mapper>

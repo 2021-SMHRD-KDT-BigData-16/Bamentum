@@ -1,0 +1,214 @@
+* {
+    box-sizing: border-box;
+    font-family: 'Noto Sans KR', sans-serif;
+}
+
+
+body {
+    margin: 0;
+    background-color: #45c2a7;
+}
+
+
+
+.login-form {
+    position: absolute;
+    top : 40%;
+    left : 43%;
+    width: 300px;
+    border-radius: 5px;
+    background-color: #EEEFF1;
+    padding: 20px;
+    
+    border: 1px solid gray;
+}
+
+.login_title {
+    position: relative;
+    left: 40%;
+}
+
+.text-field {
+    font-size: 14px;
+    margin-bottom: 10px;
+    border: none;
+    border-radius: 5px;
+    padding: 10px;
+    width: 100%;
+    border: 1px solid gray;
+}
+
+.submit_btn {
+    color: #EEEFF1;
+    font-size: 14px;
+    background-color: #1bbc98;
+    border-radius: 5px;
+    border: 1px solid gray;
+    margin-bottom: 15px;
+    width: 100%;
+    height: 40px;
+}
+
+.join_btn {
+    color: #EEEFF1;
+    font-size: 14px;
+    background-color: #1bbc98;
+    margin-top: -40px;
+    border: 1px solid gray;
+    border-radius: 5px;
+    width: 100%;
+    height: 40px;
+    
+}
+
+
+.links {
+    text-align: center;
+    margin-top: 10px;
+}
+
+.links a {
+    font-size: 12px;
+    color: #9b9b9b;
+}
+
+.introducing {
+        font-size: 100px;
+        font-weight: 800;
+        margin-top: 90px;
+        margin-left: 100px;
+    }
+
+    .introducing_2 {
+        margin-top: -230px;
+        margin-left: 950px;
+        font-size: 32px;
+        font-weight: 300;
+
+    }
+
+    .title-line {
+        margin-left: 650px;
+        margin-top: -60px;
+    }
+
+    .intro_bam {
+        font-weight: 600;
+    }
+
+    .login_bic {
+        width: 100px;
+        height: 100px;
+        margin-left: 50px;
+        margin-top: -500px;
+    }
+
+    /* 팝업 스타일 */
+    .modal-bg {
+        display: none;
+        width: 100%;
+        height: 100%;
+        position: fixed;
+        top: 0;
+        left: 0;
+        right: 0;
+        background: rgba(0, 0, 0, 0.6);
+        z-index: 999;
+    }
+
+    .join-form {
+        display: none;
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        width: 400px;
+        height: 800px;
+        border: 1px solid gray;
+        border-radius: 5px;
+        background-color: #EEEFF1;
+        background: #fff;
+        z-index: 1000;
+    }
+
+    .join_H {
+        margin-left: 162px;
+    }
+
+    .join_intro {
+        font-size: 14px;
+        margin-top: -10px;
+        margin-left: 50px;
+        font-weight: 400
+    }
+
+    .checkbox_group {}
+
+    /* 개인정보 처리방침 / 서비스 이용약관 동의 */
+    a {
+        font-weight: 500;
+        text-decoration: none;
+        outline: none;
+    }
+
+    a:link {
+        color: black;
+    }
+
+    a:visited {
+        color: black;
+
+    }
+
+    a:hover {
+        color: #1bbc98
+    }
+
+    a:active {
+        color: #ffc045;
+    }
+
+    /* 회원가입 버튼 */
+    .join_submit {
+        width: 380px;
+        height: 40px;
+        margin-top: 50px;
+        margin-left: 10px;
+        border: 1px solid rgb(192, 188, 188);
+        border-radius: 5px;
+        background-color: #1bbc98;
+        color: #ffffff;
+        font-weight: 500;
+        font-size: 15px;
+    }
+
+    .login_text-field {
+    font-size: 14px;
+    margin-bottom: 10px;
+    border: none;
+    border-radius: 5px;
+    padding: 10px;
+    width: 100%;
+    border: 1px solid gray;
+}
+
+
+    .text-field {
+        width: 380px;
+        height: 40px;
+        border-radius: 5px;
+        border: 1px solid gray;
+        margin-left: 10px;
+
+    }
+
+    .join_back {
+        width: 30px;
+        margin-top: 8px;
+        margin-left: 360px;
+    }
+
+    #checkbox input {
+        vertical-align: -3px;
+    }
+

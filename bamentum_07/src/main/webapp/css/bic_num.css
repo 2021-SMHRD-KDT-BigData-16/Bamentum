@@ -1,0 +1,352 @@
+* {
+    box-sizing: border-box;
+    font-family: 'Noto Sans KR', sans-serif;
+}
+
+.Logo {
+    width: 80px;
+    margin-left: 150px;
+}
+
+ul {
+    list-style: none;
+    padding: 0;
+}
+
+.menuLink {
+    text-decoration: none;
+    outline: none;
+    font-size: 15px;
+    font-weight: 500;
+    margin-right: 50px;
+    
+}
+
+.menuLink:link {
+    color: white;
+}
+
+.menuLink:visited {
+    color: white;
+
+}
+
+.menuLink:hover {
+    color: rgb(255, 143, 91)
+}
+
+a:active {
+    color: #ffc045;
+}
+
+
+.page {
+    background-color: #1bbc98;
+    width: 100%;
+    padding: 0;
+    border-radius: 25px;
+}
+
+header {
+    width: 100%;
+    height: 80px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+
+header>nav {
+    width: 600px;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    margin-right: 1000px;
+
+}
+
+.search-box {
+    margin-left: 455px;
+    width: fit-content;
+    height: fit-content;
+    position: relative;
+
+}
+
+.input-search {
+    height: 50px;
+    width: 50px;
+    border-style: none;
+    padding: 10px;
+    font-size: 18px;
+    font-weight: 500;
+    letter-spacing: 0px;
+    outline: none;
+    border-radius: 25px;
+    transition: all.5s ease-in-out;
+    background-color: #1bbc98;
+    padding-right: 40px;
+    color: #fff;
+    margin-left: -60px;
+}
+
+.input-search::placeholder {
+    color: rgba(255, 255, 255, .5);
+    font-size: 18px;
+    letter-spacing: 0px;
+    font-weight: 500;
+}
+
+.btn-search {
+    width: 50px;
+    height: 50px;
+    border-style: none;
+    font-size: 20px;
+    font-weight: bold;
+    outline: none;
+    cursor: pointer;
+    border-radius: 50%;
+    position: absolute;
+    right: 0px;
+    color: #ffffff;
+    background-color: transparent;
+    pointer-events: painted;
+
+}
+
+.btn-search:focus~.input-search {
+    width: 300px;
+    border-radius: 0px;
+    background-color: transparent;
+    border: 1px solid rgba(255, 255, 255, .5);
+    transition: all 500ms cubic-bezier(0, 0.110, 0.35, 1);
+}
+
+.input-search:focus {
+    width: 300px;
+    border-radius: 0px;
+    background-color: transparent;
+    border: 1px solid rgba(255, 255, 255, .5);
+    transition: all 500ms cubic-bezier(0, 0.110, 0.35, 1);
+}
+
+header ul {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    justify-content: space-between;
+}
+
+header ul>li {
+    font-size: 20px;
+    height: 100%;
+    display: flex;
+    align-items: center;
+}
+
+.profile_circle {
+    margin-left: 30px;
+    width: 50px;
+    height: 50px;
+    background-color: #ffffff;
+    border-radius: 25px;
+
+}
+
+.intro {
+    border: none;
+    width: 700px;
+    display: block;
+    text-align: center;
+    margin : 0 auto;
+    margin-top : 35px;
+}
+
+.bic_num_sector {
+    display: block;
+    border: 2px solid #1bbc98;
+    width: 700px;
+    height: 1000px;    
+    margin-left: 650px;
+    margin-top: 100px;
+    margin-bottom : 80px;
+	padding-top: 70px;
+}
+
+.selectBox_1 {
+    position: relative;
+    width: 200px;
+    height: 35px;
+    border-radius: 4px;
+    border: 2px solid #1bbc98;
+    margin-top: 50px;
+    margin-left: 430px;
+}
+
+.selectBox_1 .select {
+    width: 100%;
+    height: 100%;
+    background: transparent;
+    border: 0 none;
+    outline: 0 none;
+    padding: 0 5px;
+    position: relative;
+    z-index: 3; /* select가 위로 올라와야 함 */
+}
+
+.selectBox_1 .select option {
+    background: white;
+    color: black;
+    padding: 3px 0;
+    font-size: 16px;
+}
+
+.selectBox_1 .icoArrow {
+    position: absolute;
+    top: 0;
+    right: 0;
+    z-index: 1;
+    width: 35px;
+    height: inherit;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.input_model {
+    position: relative;
+    width: 400px;
+    height: 35px;
+    border-radius: 4px;
+    border: 2px solid #1bbc98;
+    margin-top: 0px;
+    margin-left: 0px;
+}
+
+/* 차대번호는 어디에 있나요? */
+
+.modal-bg {
+    display: none;
+    width: 100%;
+    height: 100%;
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    background: rgba(0, 0, 0, 0.6);
+    z-index: 999;
+}
+
+.num_info {
+    display: none;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 400px;
+    height: 800px;
+    border: 1px solid gray;
+    border-radius: 5px;
+    background-color: #EEEFF1;
+    background: #fff;
+    z-index: 1000;
+    box-shadow: 10px 10px 30px black;
+}
+
+.container {
+    display: flex;
+    height: 100%;
+    flex-direction: column;
+}
+
+.image-upload {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.button_here {
+    display: flex;
+    justify-content: center;
+    bottom: 300px;
+    position: absolute;
+    
+}
+
+label {
+    cursor: pointer;
+    font-size: 1em;
+    
+}
+
+#chooseFile {
+    visibility: hidden;
+}
+
+.fileContainer {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.fileInput {
+    display: flex;
+    align-items: center;
+    border-bottom: solid 2px #1bbc98;
+    width: 60%;
+    height: 30px;
+}
+
+#fileName {
+    margin-left: 5px;
+}
+
+.buttonContainer {
+    width: 15%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-left: 10px;
+    background-color: #1bbc98;
+    color: white;
+    border-radius: 30px;
+    padding: 10px;
+    font-size: 0.8em;
+
+    cursor: pointer;
+}
+
+.image-show {
+    z-index: -1;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: absolute;
+    width: 100%;
+    height: 100%;
+}
+
+.img {
+    position: absolute;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

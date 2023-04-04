@@ -1,0 +1,159 @@
+/*HEADER영역 CSS*/
+.p-3 {
+    background-color: #1BBC98 !important;
+}
+.nav li{
+    font-size: 15px;
+    font-weight: 100;        
+}
+/*FOOTER영역 CSS*/
+div#foot{
+    width:100%;        
+    position : static;
+    left: 0;
+    bottom : 0;
+}
+/*글쓰기영역 CSS*/
+.do_write{
+    margin-left:100px;
+    width: 800px; 
+    background-color: lightgrey;     
+}
+/*SECTION영역 CSS*/
+.post{        
+    margin-left: 100px;
+    width: 800px;  
+    background-color: rgb(255, 255, 255);
+}
+/*포스트 상자영역*/
+.postbox{                  
+    position: static;
+    background-color: #c5faee ;          
+    width: 800px;             
+    font-size: 20px;  
+    display:inline-block; 
+    /*text넘칠 때 ... 나오는*/  
+   
+    height: auto ;  
+    padding: 15px 25px; 
+    border-radius: 20px;
+    color: #02271f;
+    font-size: 18px;
+}
+/*포스트 제목부분*/
+p.postbox_neck{
+    width:800px;
+    padding:0 5px;
+  
+}  
+/*포스트 내용부분*/ 
+p.postbox_body{    
+       
+}
+/*글쓰기영역 CSS*/
+.alert{
+   
+    width: 800px; 
+    background-color: lightgrey;     
+}
+
+/*버튼영역*/
+button.post_origin .post_like{
+    
+    appearance: none;
+    border: 1px solid #ffffff;
+    padding: 0.1em;
+    border-radius: 0.25em;
+    font-size: 15px;
+    color: rgb(0, 5, 4);
+    background-color: #fff;
+    cursor: pointer;
+    margin: 1rem; 
+    
+}
+/*중간에 공간 주기*/
+#space{
+    height: 35px;
+    background-color: white;
+    position: static;
+    display:inline-block; 
+}
+
+/*댓글나오게*/
+#form-commentInfo{
+    width: 100%;
+}
+
+#comment-count{
+    font-size: 20px;
+    margin-bottom: 10px; 
+}
+
+#comment-input{
+    width: 700px;
+    height: 3.3em;
+    border-radius: 10px;
+}
+
+#submit{
+    background-color: rgb(7, 118, 112);
+    width: 5.5em;
+    height: 3.3em;;
+    font-size: 15px;
+    font-weight: bold;
+    color: aliceblue;
+    border-radius: 10px;
+    border-color: #c1bcba;
+}
+
+#voteUp, #voteDown{
+    width: 3.5em;
+    height: 1.9em;
+    background-color: aqua;    
+}
+
+#comments{
+    margin-top: 10px;
+}
+
+.eachComment{   
+    width :700px; 
+    margin: 10px;  
+    padding: 0.5em; 
+    border-bottom: 1px solid #c1bcba;
+}
+
+.eachComment .name{
+    font-size: 1.5em;
+    font-weight: bold;
+    margin-bottom: 0.3em;
+    display: flex;
+    justify-content: space-between;
+}
+
+.eachComment .inputValue{
+    font-size: 1.2em;
+    font-style: italic;    
+}
+
+.eachComment .time{
+    font-size: 0.7em;
+    color: #c1bcba;
+    font-style: oblique;
+    margin-top: 0.5em;
+    margin-bottom: 0.5em;
+    
+}
+
+.eachComment .voteDiv{
+    display: flex;
+    justify-content: flex-end;
+}
+
+.eachComment .deleteComment{
+    background-color: rgb(137, 230, 220);
+    color: aliceblue;
+}
+
+/*ASIDE영역 CSS*/
+ 
