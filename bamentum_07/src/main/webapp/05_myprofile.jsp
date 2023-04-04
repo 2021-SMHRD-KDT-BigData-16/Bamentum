@@ -73,7 +73,8 @@
 		LOG.debug(" page Start : {} ", "05_myprofile.jsp");
 		
 		Date nowDate = new Date();
-		SimpleDateFormat sdf = new SimpleDateFormat("yyyy/MM/dd HH:mm:ss"); 
+//		SimpleDateFormat sdf = new SimpleDateFormat("yyyy/MM/dd HH:mm:ss"); 
+		SimpleDateFormat sdf = new SimpleDateFormat("yyyy/MM/dd HH:mm"); 
 		String strNowDate = sdf.format(nowDate);
 		LOG.debug(" 날짜포맷 지정후 now {}, strNow {} ", nowDate, strNowDate);
 
@@ -141,7 +142,6 @@
 
     </div>
 
-
     <!-- 자기정보 표시 -->
     <h2 class="my_profile"> 자기소개 </h2>
     <h4 class="my_profile" > 
@@ -200,6 +200,8 @@
 
     <!-- 내가 쓴 글 표시 -->
     <%
+    
+    
 	if(listPost != null)
 	{
 		LOG.debug("05_myprofile.jsp - listPost size {} ", listPost.size());
