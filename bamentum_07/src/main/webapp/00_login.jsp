@@ -16,6 +16,19 @@
 <meta charset="UTF-8">
 
 </head>
+
+	<!-- 로그인 전체 흐름
+	
+		00_login.jsp -> FrontController.java -> LogInService.java -> BmtUserDAO.java
+		-> bmt_Mapper.xml -> OracleDB -> BmtUserDAO.java -> LogInService.java 
+		-> FrontController.jsp
+		  
+		-> 분기 
+		로그인 성공 -> 01_post.jsp
+		로그인 실패 -> 00_login.jsp 
+		
+	-->
+
 <body>
 	
   <div class="introducing">

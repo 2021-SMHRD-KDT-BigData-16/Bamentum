@@ -33,6 +33,32 @@
 
 </head>
 
+	<!-- 01_post 전체 흐름
+
+		01_post.jsp -> FrontController.java -> MorePageService.java -> BmtPostDAO.java
+		-> bmt_Mapper.xml -> OracleDB -> BmtPostDAO.java -> MorePageService.java 
+		-> FrontController.jsp -> 01_post.jsp
+	
+	01. 처음 1 페이지 로딩
+		1. 페이지 시작시에는 게시글이 없는 상태로 처음 시작함.
+		2. 페이지 로딩 끝나면 $(document).ready 호출.
+		3. 페이지 로딩 할때는 page_cnt를 0으로 초기화함. 
+		4. ajax 로 more_page.do 호출.
+		5. ajax 성공시 json 형식으로 게시글 데이터 리턴됨.
+		6. 리턴된 게시글 데이터로 java script 에서 렌더링 후 페이지 표시.
+
+
+	02. 2 페이지 부터 무한 스크롤시.
+	
+		1. window.onscroll = function() {scrollInfinite()};
+		2. 스크롤 이벤트 발생하면 무한 스크롤 함수 동작.
+		3. ajax 로 more_page.do 호출.
+		4. ajax 성공시 json 형식으로 게시글 데이터 리턴됨.
+		5. 리턴된 게시글 데이터로 java script 에서 렌더링 후 페이지 표시. 
+	
+	-->
+
+
 
 <body>
 

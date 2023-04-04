@@ -17,6 +17,18 @@
 
 </head>
 
+	<!-- 02_postCreate 전체 흐름
+
+		02_postCreate.jsp -> FrontController.java -> PostCreate.java -> BmtPostCrDAO.java
+		-> bmt_Mapper.xml -> OracleDB -> BmtPostCrDAO.java -> PostCreate.java 
+		-> FrontController.jsp -> 01_post.jsp
+		
+		
+		
+	-->
+
+
+
 <body>
 	<!-- Header -->
 	<div>

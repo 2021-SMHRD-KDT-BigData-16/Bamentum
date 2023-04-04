@@ -194,11 +194,11 @@
 
 
 	<script type="text/javascript">
-		//댓글 넣기!!!
+		// 댓글 넣기!!!
 
 		let post_comment;
 
-		//댓글을 넣은 후 등록 버튼을 눌렀을 때 댓글정보를 가져와서 변수에 저장
+		// 댓글을 넣은 후 등록 버튼을 눌렀을 때 댓글정보를 가져와서 변수에 저장
 		$('#comment_submit').click(function() {
 			console.log("comment function")
 			//input 가져오는 것을 위에 하면 아무것도 안가져오게 됨
@@ -272,7 +272,7 @@
 			})
 		}
 
-		//좋아요 ㅎㅎ
+		// 좋아요 ㅎㅎ
 		function likePost(postid) {
 
 			$.ajax({
