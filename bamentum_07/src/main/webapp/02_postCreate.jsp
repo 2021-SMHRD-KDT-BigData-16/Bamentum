@@ -83,7 +83,8 @@
             <div class="writing_div">
                 <p><textarea class="title_input" name = "p_title" placeholder="제목을 입력하세요!😊"></textarea></p>
                 <p><textarea class="content_input" name = "p_content" placeholder="내용을 입력하세요!😉"></textarea></p>
-				<p>업로드 파일<input type="file" name="p_file" value=""></p>
+				<p>업로드 파일<input type="file" accept="image/*" name="p_file" value=""></p>
+
                 <button class="post_submit" onclick="alert('피드를 등록하시겠습니까?')">등록</button>
                 <button class="cancel_submit" onclick="alert('피드 작성을 취소하시겠습니까?')">취소</button>
             </div>
