@@ -22,28 +22,30 @@ public class PostCreate implements Command  {
 	
 	@Override
 	public String execute(HttpServletRequest request, HttpServletResponse response) {
+		LOG.debug(" {} service - start ", getClass());
+		
 		String moveURL =null;
 		try {
 			
 			request.setCharacterEncoding("UTF-8");
 			HttpSession session = request.getSession();			
 			
-			String u_email=(String)session.getAttribute("email");
-			System.out.println("이메일 받아오기"+u_email);			
+			String u_email = (String)session.getAttribute("email");
+
+			String p_title = (String)session.getAttribute("p_title");
+			String p_content = (String)session.getAttribute("p_content");
+			String p_file = (String)session.getAttribute("p_file");
 			
-			String p_title=request.getParameter("p_title");
-			String p_content= request.getParameter("p_content");
-			System.out.println("글쓴내용가져오기"+p_title+p_content);
+			LOG.debug(" email: {}, title: {}, content: {}, file: {} ", 
+					u_email, p_title, p_content, p_file);
 			
 			BmtPostDTO dtopost = new BmtPostDTO();
 			dtopost.setU_email(u_email);			
 			dtopost.setP_title(p_title);
 			dtopost.setP_content(p_content);
-			dtopost.setP_file(p_content);
+			dtopost.setP_file(p_file);
 			dtopost.setP_type('f');
 			dtopost.setP_view(10);			
-			
-			System.out.println("!!!!!확인하자!!!" + u_email + p_title + p_content);
 			
 			BmtPostCrDAO daopost= new BmtPostCrDAO();
 			daopost.postInsert(dtopost);

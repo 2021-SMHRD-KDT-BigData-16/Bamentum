@@ -19,15 +19,14 @@ public class BicNumIns implements Command {
 		try {
 
 			request.setCharacterEncoding("UTF-8");
-			String b_brand = request.getParameter("b_brand");
-			String b_model = request.getParameter("b_model");
-			String b_num = request.getParameter("b_num");
-			String b_img = request.getParameter("b_img");
 			
 			HttpSession session = request.getSession();
-			String u_email=(String)session.getAttribute("email");
 			
-			
+			String u_email = (String)session.getAttribute("email");
+			String b_brand = (String)session.getAttribute("b_brand");
+			String b_model = (String)session.getAttribute("b_model");
+			String b_num = (String)session.getAttribute("b_num");
+			String b_img = (String)session.getAttribute("b_img");
 			
 			LOG.debug("b_brand : {}, b_model : {}, b_num : {} b_img {} u_email {}", 
 					b_brand, b_model, b_num, b_img, u_email);

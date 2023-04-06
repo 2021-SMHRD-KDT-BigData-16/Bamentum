@@ -161,6 +161,9 @@
 	  			{
   		%>
 				    <%= listBic.get(0).getB_num() %><br>
+				    
+		        <img class="profile_pic" src=<%= listBic.get(0).getB_img() %> >
+				    
     	<%
 	  			}
 			}

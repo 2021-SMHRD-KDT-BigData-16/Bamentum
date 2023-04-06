@@ -1,8 +1,11 @@
 package com.tscm.FrontController;
 
+import java.io.File;
 import java.io.IOException;
+import java.io.PrintWriter;
 
 import javax.servlet.RequestDispatcher;
+import javax.servlet.ServletContext;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -13,6 +16,8 @@ import javax.servlet.http.HttpSession;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
+import com.oreilly.servlet.MultipartRequest;
+import com.oreilly.servlet.multipart.DefaultFileRenamePolicy;
 import com.tscm.controller.BicNumIns;
 import com.tscm.controller.CmtCreate;
 import com.tscm.controller.CmtDelete;
@@ -38,7 +43,7 @@ public class FrontController extends HttpServlet {
 
 	protected void service(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
-		LOG.debug(" {} service - start ", "FrontController");
+		LOG.debug(" {} service - start ", getClass());
 		String moveURL = null;
 
 		request.setCharacterEncoding("UTF-8");
@@ -95,6 +100,9 @@ public class FrontController extends HttpServlet {
 			return;
 
 		} else if(strUriDo.equals("PostCreate.do")) {
+			PostFileUpload(request, response);
+			
+			
 			PostCreate postwrite= new PostCreate();
 			moveURL = postwrite.execute(request, response);
 			LOG.debug("PostCreate moveURL {} ", moveURL);
@@ -117,6 +125,9 @@ public class FrontController extends HttpServlet {
 			LOG.debug("cmtService moveURL {} ", moveURL);
 	// 2023.03.31 경수 추가			
 		} else if(strUriDo.equals("BicNumIns.do")) {
+			BicNumFileUpload(request, response);
+
+			
 			BicNumIns bic_num_ins= new BicNumIns();
 			moveURL = bic_num_ins.execute(request, response);
 			LOG.debug("BicNumIns moveURL {} ", moveURL);
@@ -154,5 +165,150 @@ public class FrontController extends HttpServlet {
 		}
 		
 	}
+	
+	
+	private void PostFileUpload(HttpServletRequest request, HttpServletResponse response) {
+		
+		LOG.debug(" {} service - start ", getClass());
+		String moveURL = null;
+		
+		try {
+			request.setCharacterEncoding("UTF-8");
+			response.setCharacterEncoding("UTF-8");
+			response.setContentType("text/html");
+			
+			PrintWriter out = response.getWriter();
+			
+//	        String root = request.getSession().getServletContext().getRealPath("/");
+//	        String root = "C:/TeamGit/Bamentum_Main/bamentum_07/src/main/webapp/DATA/bic_num_img/bic_num/";
+//			String savePath = root + "upload";
+			
+			String savePath = "C:/TeamGit/Bamentum_Main/bamentum_07/src/main/webapp/DATA/PostImage/";
+			String webRoot = "./DATA/PostImage/";
+			
+	        File f = new File(savePath);
+	        if (!f.exists()) {
+	            // 폴더가 존재하지 않으면 폴더 생성
+	            f.mkdirs();
+	        }			
+			LOG.debug(" Save Path {}  ", savePath);
+			
+			int uploadFileSizeLimit = 5 * 1024 * 1024;
+			String encType = "UTF-8";
+			
+			ServletContext context = getServletContext();
+//			String uploadFilePath = context.getRealPath(savePath);
+			LOG.debug(" Server Real Path {}  ", savePath);
+			try {
+				MultipartRequest multi = new MultipartRequest(request,
+						savePath, uploadFileSizeLimit, encType, 
+						new DefaultFileRenamePolicy());
+				
+				String fileName = multi.getFilesystemName("p_file");
+				if (fileName == null) {
+					LOG.debug("*** File Upload Fail ***");
+				} else {
+					
+					String p_title = multi.getParameter("p_title");
+					String p_content = multi.getParameter("p_content");
+					String p_file = webRoot+fileName;
+
+					HttpSession session = request.getSession();
+					session.setAttribute("p_title", p_title);
+					session.setAttribute("p_content", p_content);
+					session.setAttribute("p_file", p_file);
+					
+					LOG.debug(" PostFileUpload - input - p_title: {}, p_content : {}, p_file: {}", 
+							p_title, p_content, p_file);
+				}
+				
+			} catch (Exception e) {
+				System.out.print("*** Exception : " + e);
+			}
+			
+		} catch (Exception e) {
+			e.printStackTrace();
+			LOG.debug(" exception : {} ", e);
+		}
+		
+		return;
+	}
+	
+	
+	
+	private void BicNumFileUpload(HttpServletRequest request, HttpServletResponse response) {
+		
+		LOG.debug(" {} service - start ", getClass());
+		String moveURL = null;
+		
+		try {
+			request.setCharacterEncoding("UTF-8");
+			response.setCharacterEncoding("UTF-8");
+			response.setContentType("text/html");
+			
+			PrintWriter out = response.getWriter();
+			
+//	        String root = request.getSession().getServletContext().getRealPath("/");
+//	        String root = "C:/TeamGit/Bamentum_Main/bamentum_07/src/main/webapp/DATA/bic_num_img/bic_num/";
+//			String savePath = root + "upload";
+			
+			
+			
+			String savePath = "C:/TeamGit/Bamentum_Main/bamentum_07/src/main/webapp/DATA/bic_num_img/bic_num/";
+			String webRoot = "./DATA/bic_num_img/bic_num/";
+			
+	        File f = new File(savePath);
+	        if (!f.exists()) {
+	            // 폴더가 존재하지 않으면 폴더 생성
+	            f.mkdirs();
+	        }			
+			LOG.debug(" Save Path {}  ", savePath);
+			
+			int uploadFileSizeLimit = 5 * 1024 * 1024;
+			String encType = "UTF-8";
+			
+			ServletContext context = getServletContext();
+//			String uploadFilePath = context.getRealPath(savePath);
+			LOG.debug(" Server Real Path {}  ", savePath);
+			try {
+				MultipartRequest multi = new MultipartRequest(request,
+						savePath, uploadFileSizeLimit, encType, 
+						new DefaultFileRenamePolicy());
+				
+				String fileName = multi.getFilesystemName("b_img");
+				if (fileName == null) {
+					LOG.debug("*** File Upload Fail ***");
+				} else {
+					
+					String b_brand = multi.getParameter("b_brand");
+					String b_model = multi.getParameter("b_model");
+					String b_num = multi.getParameter("b_num");
+					String b_img = multi.getParameter("b_img");
+
+					HttpSession session = request.getSession();
+					session.setAttribute("b_brand", b_brand);
+					session.setAttribute("b_model", b_model);
+					session.setAttribute("b_num", b_num);
+					session.setAttribute("b_img", webRoot+fileName);
+					
+					LOG.debug(" FileUpload - input2 - b_brand: {}, b_model : {}, b_num: {}, b_img: {}, fileName: {}", 
+							b_brand, b_model, b_num, b_img, fileName);
+					LOG.debug(" b_img filename {}  ", webRoot+fileName);
+				}
+				
+			} catch (Exception e) {
+				System.out.print("예외 발생 : " + e);
+			}
+			
+		} catch (Exception e) {
+			e.printStackTrace();
+			LOG.debug(" exception : {} ", e);
+		}
+		
+		return;
+	}
+	
+	
+	
 
 }
