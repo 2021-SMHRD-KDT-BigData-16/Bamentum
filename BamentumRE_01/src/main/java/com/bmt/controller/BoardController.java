@@ -14,17 +14,16 @@ import com.bmt.entity.Criteria;
 import com.bmt.entity.PageMaker;
 import com.bmt.mapper.BoardMapper;
 
-
 @Controller  // 컨트롤러로 인식을한다.
 public class BoardController {
 	private static final Logger logger = LoggerFactory.getLogger(BoardController.class);
-	
 	
 	@Autowired
 	private BoardMapper mapper;
 	
 	@RequestMapping("/list")
 	public String list(Criteria cri, Model model) {
+
 		logger.info("BoardController list");
 		
 		List<Bmt_post> list = mapper.getLists(cri);
@@ -34,11 +33,9 @@ public class BoardController {
 		pm.setCri(cri);
 		pm.setTotalCount(mapper.totalCount(cri));
 		logger.info("BoardController list page {}, ", pm.getCri().getPage());
-		model.addAttribute("pm", pm); // ${pm.cri.page}
+		model.addAttribute("pm", pm);
 		return "board/list";
+		
 	}
-
-	
-	
 
 }

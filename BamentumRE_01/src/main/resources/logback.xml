@@ -18,9 +18,9 @@
 			<!--
 				C:/TeamGit/Bamen_Sub/bamentum_03/logs/bamentum.log 
 				D:/Git/WebProject/bamentum_03/logs/bamentum.log
-				D:\Git\SpringStudy\BamentumRE_01
-			-->
 				D:/Git/SpringStudy/BamentumRE_01/logs/bamentum.log 
+			-->
+				C:/TeamGit/Bamentum_Main/BamentumRE_01/logs/bamentum.log 
 			
 		</file>
 		<rollingPolicy
@@ -31,8 +31,9 @@
 				<!-- 
 					C:/TeamGit/Bamen_Sub/bamentum_02/logs/bamentum_%d{yyyy-MM-dd}.%i.log
 					D:/Git/WebProject/bamentum_02/logs/bamentum_%d{yyyy-MM-dd}.%i.log
-				 -->
 					D:/Git/SpringStudy/BamentumRE_01/logs/bamentum_%d{yyyy-MM-dd}.%i.log
+				 -->
+					C:/TeamGit/Bamentum_Main/BamentumRE_01/logs/bamentum_%d{yyyy-MM-dd}.%i.log 
 				
 			</fileNamePattern>
 
