@@ -35,6 +35,7 @@ grant all privileges on bamentum.* to 'bmt_user'@'localhost';
 -- bmt_user Table Create SQL
 -- 테이블 생성 SQL - bmt_user
 
+
 DROP TABLE bmt_post;
 DROP TABLE bmt_user;
 
@@ -43,7 +44,7 @@ CREATE TABLE bmt_user
 	email			VARCHAR(80)		NOT NULL PRIMARY KEY, 
 	pw				VARCHAR(20)		NOT NULL, 
 	nick			VARCHAR(20)		NOT NULL, 
-	profile			VARCHAR(600)	NOT NULL, 
+	profile		VARCHAR(600)	, 
 	info			VARCHAR(4000)	NOT NULL, 
 	joindate		DATETIME		DEFAULT now()
 );
@@ -53,7 +54,7 @@ CREATE TABLE bmt_post
     idx        INT    			NOT NULL 	AUTO_INCREMENT, 
     title      VARCHAR(600)     NOT NULL, 
     content    VARCHAR(4000)    NOT NULL, 
-    file       VARCHAR(600)     NOT NULL, 
+    file       VARCHAR(600)     , 
     pdate      DATETIME			DEFAULT now(), 
     email      VARCHAR(80)      NOT NULL, 
     view       INT    			NOT NULL,
@@ -153,4 +154,18 @@ insert into bmt_post (file, pdate, view, email, title, content) values ('/DATA/P
 
 commit;
 
+
+
+select * from bmt_user;
+
 select * from bmt_post;
+
+show databases;
+
+
+insert into bmt_post(title, content, file, email, view)
+   values('등록테스트', '이게 될까, 파일명 없이 등록하기.', NULL, 'aaa@aaa.aaa', 0);
+
+#    insert into bmt_post(title, content, file, email, view)
+#    values(#{title}, #{content}, #{file}, #{email}, #{view})
+

@@ -21,5 +21,8 @@ public interface BoardMapper {
 	
 	public int totalCount(Criteria cri);
 	
+    // 게시물을 등록하는 메서드 정의
+	public void register(Bmt_post vo);
+	
 	
 }

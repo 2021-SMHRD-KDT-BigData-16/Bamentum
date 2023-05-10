@@ -10,10 +10,11 @@ public class Bmt_post {
 	private int idx;
 	private String title;
 	private Date pdate;
-	private String nick;
 	private String file;
 	private int view;
 	private String content;
+	private String email;
+	private String nick;
 	
 }
 

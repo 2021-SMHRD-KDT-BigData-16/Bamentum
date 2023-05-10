@@ -22,7 +22,8 @@
 	<!-- 전체 게시물을 가져오는 SQL -->
 	<select id="getLists" resultType = "com.bmt.entity.Bmt_post"
                         parameterType="com.bmt.entity.Criteria">
-		select p.idx idx, p.title title, p.pdate pdate, u.nick nick, p.file file, p.view view, p.content content 
+		select p.idx idx, p.title title, p.pdate pdate, u.nick nick, p.file file, 
+						p.view view, p.content content, u.email email  
 		from bmt_post p, bmt_user u
     <include refid="search"/>
 		order by pdate desc
@@ -36,5 +37,10 @@
 		from bmt_post p, bmt_user u
     <include refid="search"/>
   </select>
+  
+  <insert id="register" parameterType="com.bmt.entity.Bmt_post">
+   	insert into bmt_post(title, content, file, email, view)
+	   values(#{title}, #{content}, #{file}, #{email}, #{view})
+  </insert>
 
 </mapper>

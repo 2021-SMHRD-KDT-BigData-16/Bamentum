@@ -7,6 +7,8 @@ import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 import com.bmt.entity.Bmt_post;
@@ -20,6 +22,12 @@ public class BoardController {
 	
 	@Autowired
 	private BoardMapper mapper;
+	
+	@RequestMapping("/")
+	public String root() {
+		return "redirect:/list"; // /WEB-INF/views//list.jsp
+	}
+	
 	
 	@RequestMapping("/list")
 	public String list(Criteria cri, Model model) {
@@ -37,5 +45,18 @@ public class BoardController {
 		return "board/list";
 		
 	}
+	
+	@GetMapping("/register")
+	public String register() {
+		return "board/register"; // register.jsp
+	}
+	
+	@PostMapping("/register")
+	public String register(Bmt_post vo) { // title, content, writer
+		mapper.register(vo); 
+		// 등록성공 후에는 다시 리스트페이지(/list)로 경로를 변경하기 : redirect
+		return "redirect:/list"; // /WEB-INF/views//list.jsp
+	}
+	
 
 }
